@@ -1,21 +1,19 @@
 <nav class="navbar navbar-expand navbar-light bg-dark">
-  <a class="navbar-brand text-light" href="">Demo App</a>
+  <a class="navbar-brand text-light" [routerLink]="['/home']" routerLinkActive="router-link-active">Demo App</a>
   <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div *ngIf="loggedIn()" class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link text-light" href="#">Home
-          <span class="sr-only">(current)</span>
-        </a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-light" [routerLink]="['/members']">Matches </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-light" href="#">Features</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-light" [routerLink]="['/lists']">Lists</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-light" href="#">Pricing</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-light" [routerLink]="['/messages']">Messages</a>
       </li>
     </ul>
   </div>
@@ -27,7 +25,7 @@
 
   <ul *ngIf="loggedIn()" class="navbar-nav ml-auto">
     <li class="nav-item dropdown" dropdown>
-      <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" dropdownToggle>
+      <a class="nav-link dropdown-toggle text-light" (click)="false" id="navbarDropdownMenuLink" dropdownToggle>
         Welcome {{authService.decodedToken?.unique_name | titlecase}}
       </a>
       <div class="dropdown-menu" *dropdownMenu>
